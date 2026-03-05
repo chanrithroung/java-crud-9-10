@@ -16,7 +16,7 @@ public class Main {
 
     // check choice is valid
     public static boolean validChoice(int choice) {
-        return choice <= 7 && choice >= 1;
+        return choice <= 8 && choice >= 1;
     }
 
     // check index is valid
@@ -170,6 +170,25 @@ public class Main {
                         }
                         System.out.println("The Minimum number is " + min + "\nThe Maximum number is " + max);
                     }
+                }
+
+                case 8 -> {
+                    for(int i = 0; i < n - 1; i++) {
+                        for(int j = i + 1; j < n; j++) {
+                            if(numbers[i] > numbers[j]) {
+                                int temp = numbers[i];
+                                numbers[i] = numbers[j];
+                                numbers[j] = temp;
+                            }
+                        }
+                    }
+
+                    System.out.println("ASC Sort completed!");
+                    System.out.print("Sorted numbers = [");
+                    for(int i = 0; i < n; i++) {
+                        System.out.print(numbers[i] + ",");
+                    }
+                    System.out.println("\b]");
                 }
             }
         } while(choice != 10);
