@@ -8,12 +8,15 @@ public class Main {
         System.out.println("2.Read Array");
         System.out.println("3.Update Array");
         System.out.println("4.Delete Array");
+        System.out.println("5.Search Element in array!");
+        System.out.println("6.Sum all element in array");
+        System.out.println("7.Find Minimum and Maximum number in array!");
         System.out.println("============================");
     }
 
     // check choice is valid
     public static boolean validChoice(int choice) {
-        return choice <= 4 && choice >= 1;
+        return choice <= 7 && choice >= 1;
     }
 
     // check index is valid
@@ -126,8 +129,49 @@ public class Main {
                         }
                     }
                 }
-            }
 
-        } while(choice != 5);
+                case 5 -> {
+                    if(n == 0) {
+                        emptyArrayAlert();
+                    } else {
+                        System.out.print("Enter value that you want to search in array: ");
+                        int searchValue = scanner.nextInt();
+                        int index = searchIndex(numbers, searchValue, n);
+                        if(index != -1) {
+                            System.out.println("Foud " + numbers[index] + " in index " + index);
+                        } else {
+                            System.out.println("Not found " + searchValue + " in any index of array!");
+                        }
+                    }
+                }
+
+                case 6 -> {
+                    int sum = 0;
+                    for(int i = 0; i < n; i++) {
+                        System.out.print(numbers[i] + " + ");
+                        sum += numbers[i];
+                    }
+                    System.out.println("\b\b = " + sum);
+                }
+
+                case 7 -> {
+                    if(n == 0) {
+                        emptyArrayAlert();
+                    } else {
+                        int min;
+                        int max;
+                        min = max = numbers[0];
+
+                        // 20, 40, 60, 10, 70
+                        // min = numbers[0];
+                        for(int i = 1; i < n; i++) {
+                            if(numbers[i] < min) min = numbers[i];
+                            if(numbers[i] > max) max = numbers[i];
+                        }
+                        System.out.println("The Minimum number is " + min + "\nThe Maximum number is " + max);
+                    }
+                }
+            }
+        } while(choice != 10);
     }
 }
